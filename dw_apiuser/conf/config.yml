@@ -4,7 +4,13 @@ defaultName: Stranger
 server:
   applicationConnectors:
     - type: http
-      port: 8082
+      port: 8085
   adminConnectors:
     - type: http
-      port: 8083
+      port: 8084
+
+database:
+    driverClass: org.postgresql.Driver
+    user: postgres
+    password: docker
+    url: jdbc:postgresql://localhost:5432/dw_user

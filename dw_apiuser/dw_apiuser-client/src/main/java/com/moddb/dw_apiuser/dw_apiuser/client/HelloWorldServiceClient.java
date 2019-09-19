@@ -19,7 +19,7 @@ import javax.ws.rs.core.MultivaluedMap;
 
 public class HelloWorldServiceClient {
     private static String helloWorldService =
-            "http://localhost:8082/";
+            "http://localhost:8085/";
     private static String helloWorldResource =
             "hello-world";
     

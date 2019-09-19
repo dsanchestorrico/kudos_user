@@ -18,9 +18,9 @@ import com.moddb.dw_apiuser.dw_apiuser.resource.HelloWorldResource;
  */
 public class HelloWorldService extends Application<HelloWorldConfiguration> {
 
-    public static void main(String args[]) throws Exception {
-        new HelloWorldService().run(args);
-    }
+//    public static void main(String args[]) throws Exception {
+//        new HelloWorldService().run(args);
+//    }
 
     @Override
     public void run(HelloWorldConfiguration configuration,

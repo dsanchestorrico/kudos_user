@@ -54,7 +54,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.moddb.dw_apiuser.dw_apiuser.HelloWorldService</mainClass>
+                                    <mainClass>com.moddb.dw_apiuser.dw_apiuser.UsuarioService</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
