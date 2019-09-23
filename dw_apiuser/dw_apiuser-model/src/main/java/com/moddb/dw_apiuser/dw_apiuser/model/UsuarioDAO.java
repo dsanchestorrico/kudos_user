@@ -27,7 +27,8 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
         return persist(usuario).getIdUsuario();
     }
 
-    public long deleteUsuario(Usuario usuario) {
+    public long deleteUsuario(Integer idUsuario) {
+        Usuario usuario = get(idUsuario);
         currentSession().delete(usuario);
         return usuario.getIdUsuario();
     }
