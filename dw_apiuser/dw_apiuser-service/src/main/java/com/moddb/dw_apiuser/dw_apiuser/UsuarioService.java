@@ -6,6 +6,7 @@
 package com.moddb.dw_apiuser.dw_apiuser;
 
 import com.moddb.dw_apiuser.dw_apiuser.conf.UsuarioConfiguration;
+import com.moddb.dw_apiuser.dw_apiuser.model.Suscriber;
 import com.moddb.dw_apiuser.dw_apiuser.model.Usuario;
 import com.moddb.dw_apiuser.dw_apiuser.model.UsuarioDAO;
 import com.moddb.dw_apiuser.dw_apiuser.resource.UsuarioResource;
@@ -14,6 +15,8 @@ import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 /**
  *
@@ -39,10 +42,11 @@ public class UsuarioService extends Application<UsuarioConfiguration> {
 
     @Override
     public void run(UsuarioConfiguration configuration,
-        Environment environment) {
+        Environment environment) throws IOException, TimeoutException {
 
         final UsuarioDAO dao = new UsuarioDAO(hibernate.getSessionFactory());
         environment.jersey().register(new UsuarioResource(dao));
+        
     }
 
 }

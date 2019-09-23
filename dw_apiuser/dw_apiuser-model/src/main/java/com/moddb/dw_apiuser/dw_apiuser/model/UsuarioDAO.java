@@ -6,6 +6,7 @@
 package com.moddb.dw_apiuser.dw_apiuser.model;
 
 import io.dropwizard.hibernate.AbstractDAO;
+import java.math.BigInteger;
 import java.util.List;
 import org.hibernate.SessionFactory;
 
@@ -31,6 +32,13 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
         Usuario usuario = get(idUsuario);
         currentSession().delete(usuario);
         return usuario.getIdUsuario();
+    }
+    
+    public BigInteger sumKudoUsuario(Integer idUsuario) {
+        Usuario usuario = get(idUsuario);
+        usuario.setCantidadKudos(usuario.getCantidadKudos().add(BigInteger.ONE));
+        persist(usuario);
+        return BigInteger.ONE;//usuario.getCantidadKudos();
     }
 
     public List<Usuario> findAll() {

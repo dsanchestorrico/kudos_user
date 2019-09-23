@@ -17,9 +17,16 @@ import java.util.concurrent.TimeoutException;
  * @author danielsan
  */
 public class Suscriber {
-    public void suscribe() throws IOException, TimeoutException {
+    private UsuarioDAO dao;
 
-        String QUEUE_NAME = "hello";
+    public Suscriber(final UsuarioDAO dao) {
+        this.dao = dao;
+    }
+    
+    
+    public void suscribeAddKudoQty() throws IOException, TimeoutException {
+
+        String QUEUE_NAME = "ADD_KUDO_QTY_STATS";
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
@@ -32,6 +39,7 @@ public class Suscriber {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
             System.out.println(" [x] Received '" + message + "'");
+            dao.sumKudoUsuario(Integer.parseInt(message));
         };
         
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> {

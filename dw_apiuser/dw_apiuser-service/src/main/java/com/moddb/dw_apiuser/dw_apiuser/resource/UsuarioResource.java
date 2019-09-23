@@ -7,6 +7,7 @@ package com.moddb.dw_apiuser.dw_apiuser.resource;
 
 import com.moddb.dw_apiuser.dw_apiuser.model.CommonInput;
 import com.moddb.dw_apiuser.dw_apiuser.model.Publisher;
+import com.moddb.dw_apiuser.dw_apiuser.model.Suscriber;
 import com.moddb.dw_apiuser.dw_apiuser.model.Usuario;
 import com.moddb.dw_apiuser.dw_apiuser.model.UsuarioDAO;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -34,13 +35,15 @@ public class UsuarioResource {
 
     private UsuarioDAO dao;
 
-    public UsuarioResource(UsuarioDAO dao) {
+    public UsuarioResource(final UsuarioDAO dao) throws IOException, TimeoutException {
         this.dao = dao;
     }
 
     @GET
     @UnitOfWork
-    public List<Usuario> findAll() {
+    public List<Usuario> findAll() throws IOException, TimeoutException {
+        Suscriber suscriber = new Suscriber(dao);
+        suscriber.suscribeAddKudoQty();
         return dao.findAll();
     }
 
